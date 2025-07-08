@@ -22,7 +22,7 @@ def send_telegram(message):
 
 # === Auth with cTrader ===
 def get_access_token():
-    url = url = "https://demo.ctraderapi.com/connect/token"
+    url = "https://demo.ctraderapi.com/connect/token"
     data = {
         "grant_type": "client_credentials",
         "client_id": CLIENT_ID,
@@ -30,7 +30,7 @@ def get_access_token():
     }
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     try:
-        response = requests.post(url, data=data, headers=headers)
+        response = requests.post(url, data=data, headers=headers, timeout=10)
         if response.status_code != 200:
             send_telegram(f"❌ Auth failed: {response.status_code}\n{response.text}")
             return None
