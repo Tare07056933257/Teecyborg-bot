@@ -22,7 +22,7 @@ def send_telegram(message):
 
 # === Auth with cTrader ===
 def get_access_token():
-    url = "https://api.spotware.com/connect/token"
+    url = url = "https://demo.ctraderapi.com/connect/token"
     data = {
         "grant_type": "client_credentials",
         "client_id": CLIENT_ID,
