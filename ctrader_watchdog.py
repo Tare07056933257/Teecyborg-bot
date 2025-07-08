@@ -27,7 +27,12 @@ def get_access_token():
     }
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     response = requests.post(url, data=data, headers=headers)
-    return response.json().get("access_token")
+
+    try:
+        return response.json().get("access_token")
+    except Exception as e:
+        send_telegram(f"❌ Auth error: {e}\nRaw response: {response.text}")
+        return None
 
 # === Step 2: Get open positions ===
 def check_open_positions(token):
